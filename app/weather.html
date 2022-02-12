@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang = "en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Weather</title>
+  <link rel="stylesheet" href="weather.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--Map access-->
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.css' rel='stylesheet'>
+
+  <style type="text/css">
+    #map {
+        width: 300px;
+        height: 250px
+    }
+  </style>
+</head>
+
+<body>
+    <style>
+        .demo-layout-transparent {
+          background-image: linear-gradient(to bottom right, red, yellow);
+        }
+        .demo-layout-transparent .mdl-layout__header,
+        .demo-layout-transparent .mdl-layout__drawer-button {
+          /* This background is dark, so we set text to white. Use 87% black instead if
+             your background is light. */
+          color: white;
+        }
+        </style>
+     <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+        <header class="mdl-layout__header mdl-layout__header--transparent">
+          <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">Weather Conditions</span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation -->
+            <nav class="mdl-navigation" id="topRightDisplay">
+              <!---<a class="mdl-navigation__link" href="">Link</a>--->
+            </nav>
+          </div>
+        </header>
+        <div class="mdl-layout__drawer" >
+          <span class="mdl-layout-title">Navigation</span>
+          <nav class="mdl-navigation" id="navigationLinks">
+            <a class="mdl-navigation__link" href="map.html">Home</a>
+            <a class="mdl-navigation__link" href="register.html">Sign Up</a>
+            <a class="mdl-navigation__link" href="signin.html">Login</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+          </nav>
+        </div>
+        <main class="mdl-layout__content">
+        <form class="box" method= "POST">
+            <!--Weather condition table-->
+        <div class="mdl-cell mdl-cell--4-col">
+          <div class="mdl-cell mdl-cell--4-col">
+            <div>
+             <!--table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="border-collapse: collapse; padding: 15px;">
+               <thead>
+                 <tr>
+                   <th class="mdl-data-table__cell--non-numeric"><h5>Current Weather conditions</h5></th>
+                   <td><span class="material-icons">thermostat</span></td>
+               </thead>
+               <tbody id = "weatherTable-origin">
+                 <tr>
+                   <td class="mdl-data-table__cell--non-numeric">Temperature</td>
+                   <td>&#8451;</td>
+                 </tr>
+                 <tr>
+                   <td class="mdl-data-table__cell--non-numeric">Humidity</td>
+                   <td>%</td>
+                 </tr>
+                 <tr>
+                   <td class="mdl-data-table__cell--non-numeric">Wind Speed</td>
+                   <td>km/hr</td>
+                 </tr>
+                 <tr>
+                   <td class="mdl-data-table__cell--non-numeric">Wind Gust</td>
+                   <td> knots</td>
+                 </tr>
+                 <tr>
+                   <td class="mdl-data-table__cell--non-numeric">UV Index</td>
+                   <td></td>
+                 </tr>
+               </tbody>
+             </table-->
+             
+             <div class="black_box" >
+              <div class="mdl-grid">
+               <div class="mdl-cell mdl-cell--6-col">
+                <h4 class="h3_box">Temperature</h4>
+                <h4 id="tempOutput" class="right_text"></h4>
+                <input type="range" min="-10" max="60" value="0" class="slider" id="tempRange">
+                
+                <h4 class="h3_box">Humidity</h4>
+                <h4 id="humdOutput" class="right_text"></h4>
+                <input type="range" min="0" max="100" value="50" class="slider" id="humdRange">
+                
+                <h4 class="h3_box">Wind speed</h4>
+                <h4 id="windOutput" class="right_text"></h4>
+                <input type="range" min="0" max="50" value="50" class="slider" id="windRange">
+                
+                <input type="button" id="button1" name="" value="Reset" onclick="resetConditions()">
+                <input type="button" id="button2" name="" value="Back" onclick="backButton()">
+               </div>
+               <div class="mdl-cell mdl-cell--6-col">
+                <!-- <img src="img/arrow.png" style = "float: right; margin: 50px 0px 0px -50px; width: 60px" > -->
+                <h4 class="h3_box">Wind Direction</h4><h4 id="windOutput" class="right_text" style="color:white">_</h4>
+                <img id="arrow" src="img/arrow.png" class="arrow_image"  style="width: 60px; display: block; margin-left: auto; margin-right: auto;">
+                
+                <h4 class="h3_box">UV Index</h4>
+                <h4 id="uvOutput" class="right_text"></h4> <br>
+
+                <h4 class="h3_box">Visibility</h4>
+                <h4 id="visibilityOutput" class="right_text"></h4>
+               </div>
+               </div>
+              </div>
+             </div>
+             
+             <div class="art_box">
+               <h3 class="h3_box" id="day">Tuesday</h3>
+               <h4 id="date">15 Jan 2020</h4>
+               <h4 id="location">Melbourne, AUS</h4>
+               <br>
+               <br>
+               <br>
+               <br>
+               <h3 class="h1_box" id="fireDangerOutput"></h3>
+              <!-- <div class="mapdiv" id="map"></div><br> -->
+             
+            </div>
+           </div>
+        </form>
+        </main>
+      </div>
+
+</body>
+<script src="js/class.js"></script>
+<script src="js/weather.js"></script>
+
+</html>

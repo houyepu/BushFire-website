@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<!-- redo the whole page -->
+    <head>
+        <!-- style sheet -->
+        <link rel="stylesheet" href="usermap.css">
+        <link rel="stylesheet" href="firedepartment.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--Map access-->
+        <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.js'></script>
+        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.css' rel='stylesheet'>
+
+        <!-- text style -->
+        <style type="text/css">
+            #map {
+                position: absolute;
+                width: 800px;
+                height: 800px
+            }
+        </style>
+    </head>
+
+    <body>
+        
+    
+    <!-- navigation bar -->
+    <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+        <header class="mdl-layout__header mdl-layout__header--transparent">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">Fire Department</span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation -->
+            <nav class="mdl-navigation" id="topRightDisplay">
+            <!-- <nav class="mdl-navigation" id="topRightDisplay"> -->
+            <a class="mdl-navigation__link" href="register.html"></a>
+            </nav>
+        </div>
+        </header>
+        <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Navigation</span>
+        <nav class="mdl-navigation" id="navigationLinks">
+        </nav>
+    </div>
+
+    <!-- main content -->
+    
+    <main class="mdl-layout__content">
+        <div class="mapdiv" id="map"></div>
+        <div class="fire-legend">
+            <img id="fire-index" src="img/legend.jpg" >
+            
+        
+        </div>
+    <!-- scirpts included -->
+        <script src="js/class.js"></script>
+        <script src="js/firedepartment.js"></script>
+    </main>
+
+    </body>
+    
+</form>
+
+</html>

@@ -1,0 +1,241 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #f7b42c;
+    background-image: linear-gradient(315deg, #f7b42c 0%, #fc575e 74%);
+
+}
+.table {
+    width: 100%; 
+    max-width: 100%; 
+    margin-bottom: 20px;
+    float: middle;
+}
+.box{
+    width: 520px;
+    height: 610px;
+    padding: 20px;
+    border: solid #000000;
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    float: right;
+    transform: translate(-50%,-50%);
+    background: #ffffff;
+    text-align: middle;
+    border-radius: 25px;
+}
+.box h1{
+    color:rgb(0, 0, 0);
+    font-weight: 500;
+    text-align: center;
+}
+.mapdiv{
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+}
+
+.btn {
+    text-decoration: none;
+    border: 2px solid black;
+    padding: 5px 8px;
+    font-size: 12px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(3, 24, 2);
+    border-radius: 5px;
+    /*box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);*/
+    cursor: pointer;
+    outline: none;
+    transition: 0.2s all;
+    z-index: 2;
+}
+/* Adding transformation when the button is active */
+  
+.btn:hover {
+background-color: rgb(129, 247, 164);
+transform: scale(0.95);
+    /* Scaling button to 0.90 to its original size */
+box-shadow: 3px 2px 22px 1px rgba(4, 7, 51, 0.973);
+    /* Lowering the shadow */
+animation: ripple 600ms linear;
+}
+
+/* Note popup */
+.btn1 {
+    text-decoration: none;
+    border: 2px solid rgb(238, 57, 57);
+    padding: 5px 8px;
+    font-size: 12px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(3, 24, 2);
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: 0.2s all;
+    z-index: 2;
+}
+.btn1:hover {
+    background-color: rgb(247, 96, 96);
+    transform: scale(0.98);
+        /* Scaling button to 0.90 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(4, 7, 51, 0.973);
+        /* Lowering the shadow */
+    animation: ripple 600ms linear;
+    }
+.popup .overlay{
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100vw;
+    height:100vh;
+    background:rgba(0,0,0,0.7);
+    z-index:1;
+    display:none;
+}
+
+.popup .note-content{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(0);
+    background:#fff;
+    width: 900px;
+    height: 700px;
+    z-index:2;
+    text-align:center;
+    padding:20px;
+    box-sizing:border-box;
+}
+
+.popup .close-btn {
+    position:absolute;
+    right:20px;
+    top:20px;
+    width:30px;
+    height:30px;
+    background:#222;
+    color:#fff;
+    font-size:25px;
+    font-weight: 600;
+    line-height: 30px;
+    text-align:center;
+    border-radius:50%;
+    cursor: pointer;
+}
+
+.popup.active .overlay {
+    display:block;
+}
+
+.popup.active .note-content {
+    transition:all 300ms ease-in-out;
+    transform:translate(-50%,-50%) scale(1);
+}
+
+#store-notes {
+
+    padding: 15px;
+    height: 600px;
+    position: relative;
+}
+
+.note-area{
+    border-color: black;
+    padding: 15px;
+    width: 800px;
+    height: 250px;
+
+}
+
+
+#note-body {
+    font-size: large;
+    vertical-align: bottom;
+    height: 150px;
+    width: 730px;
+    position: absolute;
+    bottom: 50px;
+    left: 60px;
+
+}
+
+#note-title {
+    width:500px;
+    margin-left: 2rem;
+    text-align: left;
+}
+
+
+
+#report-user {
+    padding: 15px;
+    width: 200px;
+    margin-left: 100px;
+}
+
+.report-details {
+    width: 500px;
+    padding: 15px;
+    margin-left: 90px;
+    font-size: large;
+    text-align: left;
+    color: black;
+    height:200px;
+
+}
+
+#details {
+    font-size: 30px;
+    line-height: 50px;
+    margin-bottom: 20px;
+
+}
+
+#checkmark {
+    width: 300px;
+    transform: translate(0%,20%);
+}
+
+@media only screen and (max-width: 1348px){
+    .box{
+
+        width: 35%;
+        max-height: 670px;
+        top: 50%;
+        left: 75%;
+        float: right;
+        transform: translate(-50%,-50%);
+        
+    }
+
+    .box h1{
+        font-size: 300%;
+        text-align: center;
+
+    }
+
+
+}
+
+@media only screen and (max-width: 1068px){
+    .box{
+        height: 80%;
+        width: 70%;
+        max-height: 250px;
+        top: 76%;
+        left: 50%;
+        float: right;
+        transform: translate(-50%,-50%);
+        
+    }
+
+    .box h1{
+        font-size: 20px;
+        text-align: center;
+
+    }
+}
+
